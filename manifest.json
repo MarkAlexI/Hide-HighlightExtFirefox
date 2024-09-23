@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Hide & Highlight",
+  "short_name": "Hide&Highlight",
+  "author": "MarkAlexI",
+  "version": "1.0",
+  "description": "\"Hide & Highlight\" allows you to hide or highlight any text nodes on web pages for convenient display to other people.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Modify visibility of important text"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{07c5b3d8-58af-4557-88d5-51d19d185790}"
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; style-src 'self';"
+  }
+}
