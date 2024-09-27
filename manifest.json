@@ -3,7 +3,7 @@
   "name": "Hide & Highlight",
   "short_name": "Hide&Highlight",
   "author": "MarkAlexI",
-  "version": "1.0",
+  "version": "1.1",
   "description": "\"Hide & Highlight\" allows you to hide or highlight any text nodes on web pages for convenient display to other people.",
   "action": {
     "default_popup": "popup.html",
