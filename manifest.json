@@ -3,11 +3,20 @@
   "name": "Hide & Highlight",
   "short_name": "Hide&Highlight",
   "author": "MarkAlexI",
-  "version": "1.1",
+  "version": "1.2",
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "192": "images/icon-192.png"
+  },
   "description": "\"Hide & Highlight\" allows you to hide or highlight any text nodes on web pages for convenient display to other people.",
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Modify visibility of important text"
+    "default_title": "Modify visibility of important text",
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png"
+    }
   },
   "browser_specific_settings": {
     "gecko": {
