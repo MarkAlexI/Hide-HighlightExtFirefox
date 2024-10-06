@@ -8,9 +8,16 @@ const updateBadge = (isActive = false) => {
   browser.action.setBadgeBackgroundColor({ 'color': badgeColor });
 };
 
+const reload = () => {
+  browser.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    browser.tabs.reload(tabs[0].id);
+  });
+};
+
 const toggleSwitch = document.getElementById("toggle-visibility");
 const textInput = document.getElementById("blur-text");
 const modeSelect = document.getElementById("mode-select");
+const reloadBtn = document.getElementById("reload");
 
 browser.storage.sync.get(["isActive", "targetText", "mode"], (data) => {
   toggleSwitch.checked = !!data.isActive;
@@ -33,4 +40,8 @@ textInput.addEventListener("input", (event) => {
 modeSelect.addEventListener("change", (event) => {
   const selectedMode = event.target.value;
   browser.storage.sync.set({ "mode": selectedMode });
+});
+
+reloadBtn.addEventListener("click", () => {
+  reload();
 });

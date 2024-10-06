@@ -11,19 +11,6 @@
 <body>
   <div class="container">
     <h2>Hide & Highlight Extension</h2>
-        <p>Use this extension to blur or highlight specific text on the page.</p>
-        
-Original file line number	Diff line number	Diff line change
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles/popup.css">
-  <title></title>
-  <title>Hide & Highlight</title>
-</head>
-
-<body>
-  <div class="container">
-    <h2>Hide & Highlight Extension</h2>
     <p>Use this extension to blur or highlight specific text on the page.</p>
 
     <label for="toggle-visibility">Enable Text Modification:</label>
@@ -31,12 +18,15 @@ Original file line number	Diff line number	Diff line change
       <input id="toggle-visibility" type="checkbox">
       <span class="switch-slider"></span>
     </label>
+
     <label for="mode-select">Select Mode:</label>
     <select id="mode-select">
       <option value="blur">Blur</option>
       <option value="highlight">Highlight</option>
     </select>
+
     <input class="text-input" id="blur-text" type="text" placeholder="Enter keyword to modify">
+    <button id="reload">Apply rule</button>
   </div>
   <script src="scripts/popup.js"></script>
 </body>
