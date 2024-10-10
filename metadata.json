@@ -1,0 +1,11 @@
+{
+  "summary": {
+    "en-US": "\"Hide & Highlight\" allows you to hide or highlight any text nodes on web pages for convenient display to other people."
+  },
+  "categories": [
+    "privacy-security"
+  ],
+  "version": {
+    "license": "MIT"
+  }
+}
