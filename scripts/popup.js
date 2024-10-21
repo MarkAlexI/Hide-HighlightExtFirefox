@@ -8,9 +8,11 @@ const updateBadge = (isActive = false) => {
   browser.action.setBadgeBackgroundColor({ 'color': badgeColor });
 };
 
-const reload = () => {
-  browser.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    browser.tabs.reload(tabs[0].id);
+const apply = () => {
+  browser.storage.sync.remove(["timestamp"], () => {
+    browser.storage.sync.set({
+      "timestamp": Date.now()
+    });
   });
 };
 
@@ -29,26 +31,31 @@ browser.storage.sync.get(["isActive", "targetText", "mode"], (data) => {
 
 toggleSwitch.addEventListener("change", (event) => {
   const isActive = event.target.checked;
-  browser.storage.sync.set({ "isActive": isActive });
+
+  browser.storage.sync.set({
+    "isActive": isActive,
+    "timestamp": Date.now()
+  });
   updateBadge(isActive);
   reloadBtn.style.display = isActive ? "block" : "none";
 
   if (!isActive) {
     textInput.value = '';
-    reload();
+    browser.storage.sync.set({
+      "targetText": textInput.value
+    })
+    apply();
   }
 });
 
-textInput.addEventListener("input", (event) => {
-  const inputValue = event.target.value;
-  browser.storage.sync.set({ "targetText": inputValue });
-});
-
-modeSelect.addEventListener("change", (event) => {
-  const selectedMode = event.target.value;
-  browser.storage.sync.set({ "mode": selectedMode });
-});
-
 reloadBtn.addEventListener("click", () => {
-  reload();
+  const inputValue = textInput.value;
+  const selectedMode = modeSelect.value;
+
+  browser.storage.sync.set({
+    "targetText": inputValue,
+    "mode": selectedMode
+  }, () => {
+    apply();
+  });
 });
