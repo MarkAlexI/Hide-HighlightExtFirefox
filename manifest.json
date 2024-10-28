@@ -3,7 +3,7 @@
   "name": "Hide & Highlight",
   "short_name": "Hide&Highlight",
   "author": "MarkAlexI",
-  "version": "1.10",
+  "version": "1.11",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -20,7 +20,12 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "{07c5b3d8-58af-4557-88d5-51d19d185790}"
+      "id": "{07c5b3d8-58af-4557-88d5-51d19d185790}",
+      "min_strict_version": "110.0"
+    },
+    "gecko_android": {
+      "id": "{07c5b3d8-58af-4557-88d5-51d19d185790}",
+      "min_strict_version": "120.0"
     }
   },
   "permissions": [
