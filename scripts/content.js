@@ -1,7 +1,8 @@
 "use strict";
 
 const blurEffect = "blur(8px)";
-const highlightEffect = "font-weight: bold; font-size: 1.5em; color: #ff5722; text-shadow: 2px 2px 4px rgba(128, 0, 0, 0.4);";
+const HIGHLIGHT = "font-weight: bold; font-size: 1.5em;";
+let highlightEffect;
 let targetText = "";
 let mode = "blur";
 let isActive = false;
@@ -10,7 +11,14 @@ const applyEffect = (element, mode) => {
   if (mode === "blur") {
     element.style.filter = blurEffect;
   } else if (mode === "highlight") {
-    element.style.cssText = highlightEffect;
+    browser.storage.sync.get(["textColor", "shadowColor"], (data) => {
+      const textColor = data.textColor || "#ff5722";
+      const shadowColor = data.shadowColor || "#ff0000";
+      
+      highlightEffect = `${HIGHLIGHT} color: ${textColor}; text-shadow: 2px 2px 4px ${shadowColor}40;`;
+
+      element.style.cssText = highlightEffect;
+    });
   }
 };
 
@@ -29,7 +37,7 @@ const scanNode = (node) => {
   if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
     const parentElem = node.parentElement;
     if (parentElem && !["SCRIPT"].includes(parentElem.tagName)) {
-      if (node.textContent.toLowerCase().includes(targetText.toLowerCase())) {
+      if (node.textContent.toLowerCase().includes(targetText.toLowerCase().trim())) {
         if (isActive) {
           applyEffect(parentElem, mode);
         } else {
@@ -61,7 +69,7 @@ const updateObserver = () => {
   }
 };
 
-chrome.storage.sync.get(["isActive", "targetText", "mode"], (data) => {
+browser.storage.sync.get(["isActive", "targetText", "mode"], (data) => {
   isActive = data.isActive !== false;
   targetText = data.targetText || "";
   mode = data.mode || "blur";
@@ -69,7 +77,7 @@ chrome.storage.sync.get(["isActive", "targetText", "mode"], (data) => {
   if (isActive) updateObserver();
 });
 
-chrome.storage.onChanged.addListener((changes) => {
+browser.storage.onChanged.addListener((changes) => {
   if (changes.isActive) {
     isActive = changes.isActive.newValue !== false;
   }
