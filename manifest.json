@@ -3,7 +3,7 @@
   "name": "Hide & Highlight",
   "short_name": "Hide&Highlight",
   "author": "MarkAlexI",
-  "version": "1.13",
+  "version": "1.14",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -28,6 +28,7 @@
       "min_strict_version": "120.0"
     }
   },
+  "options_page": "options/color-options.html",
   "permissions": [
     "storage",
     "tabs"
