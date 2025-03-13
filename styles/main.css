@@ -164,3 +164,22 @@ select,
 #save-btn:hover {
   background-color: steelblue;
 }
+
+.browser-warning {
+  background-color: #ffcc00;
+  color: #000;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.browser-warning a {
+  color: #d00;
+  text-decoration: underline;
+}
+
+.browser-warning a:hover {
+  text-decoration: none;
+}

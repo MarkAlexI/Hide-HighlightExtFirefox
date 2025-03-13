@@ -3,7 +3,7 @@
 const updateBadge = (isActive = false) => {
   const label = isActive ? "ON" : "OFF";
   const badgeColor = isActive ? "#0000FF" : "#A9A9A9";
-
+  
   browser.action.setBadgeText({ text: label });
   browser.action.setBadgeBackgroundColor({ 'color': badgeColor });
 };
@@ -32,7 +32,7 @@ browser.storage.sync.get(["isActive", "targetText", "mode", "textColor", "shadow
   textColor.style.backgroundColor = data.textColor || "#ff5722";
   shadowColor.style.backgroundColor = data.shadowColor || "#ff0000";
   reloadBtn.style.display = data.isActive ? "block" : "none";
-
+  
   if (modeSelect.value === "highlight") {
     setTimeout(function() {
       selectColor.classList.remove("hidden");
@@ -42,7 +42,7 @@ browser.storage.sync.get(["isActive", "targetText", "mode", "textColor", "shadow
 
 toggleSwitch.addEventListener("change", (event) => {
   const isActive = event.target.checked;
-
+  
   browser.storage.sync.set({
     "isActive": isActive,
     "timestamp": Date.now()
@@ -51,7 +51,7 @@ toggleSwitch.addEventListener("change", (event) => {
   setTimeout(function() {
     reloadBtn.style.display = isActive ? "block" : "none";
   }, 0);
-
+  
   if (!isActive) {
     textInput.value = '';
     browser.storage.sync.set({
@@ -86,7 +86,7 @@ modeSelect.addEventListener("change", () => {
 reloadBtn.addEventListener("click", () => {
   const inputValue = textInput.value;
   const selectedMode = modeSelect.value;
-
+  
   browser.storage.sync.set({
     "targetText": inputValue,
     "mode": selectedMode
@@ -101,5 +101,11 @@ browser.storage.onChanged.addListener((changes) => {
   }
   if (changes.shadowColor) {
     shadowColor.style.backgroundColor = changes.shadowColor.newValue;
+  }
+});
+
+browser.runtime.getBrowserInfo().then(info => {
+  if (parseInt(info.version) < 128) {
+    document.getElementById("warning-info").classList.remove("hidden");
   }
 });

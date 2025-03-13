@@ -11,21 +11,34 @@
 <body>
   <div class="container">
     <h2 data-i18n="header"></h2>
+    
+    <div
+      class="browser-warning hidden"
+      id="warning-info"
+    >
+      <p>
+        Your Firefox browser version is outdated. Extensions may not work properly. Update Firefox now.
+      </p>
+      <a href="https://support.mozilla.org/en-US/kb/root-certificate-expiration" target="_blank">
+        More info from Mozilla
+      </a>
+    </div>
+    
     <p data-i18n="info1"></p>
     <p data-i18n="info2"></p>
-
+    
     <label for="toggle-visibility" data-i18n="enable"></label>
     <label class="toggle-switch">
       <input id="toggle-visibility" type="checkbox">
       <span class="switch-slider"></span>
     </label>
-
+    
     <label for="mode-select" data-i18n="selectmode"></label>
     <select id="mode-select">
       <option value="blur" data-i18n="bluroption"></option>
       <option value="highlight" data-i18n="highlightoption"></option>
     </select>
-
+    
     <input class="text-input" id="blur-text" type="text" placeholder="i18n" data-i18n="placeholder">
     <div class="select-color hidden" id="select-color">
       <p data-i18n="info3"></p>
@@ -40,7 +53,7 @@
     </div>
     <button class="btn" id="reload" data-i18n="applyrule"></button>
   </div>
-
+  
   <script src="scripts/i18n.js"></script>
   <script src="scripts/popup.js"></script>
 </body>
