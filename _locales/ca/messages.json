@@ -1,0 +1,23 @@
+{
+  "chromename": { "message": "Amaga i Ressalta" },
+  "description": { "message": "\"Amaga i Ressalta\" et permet ocultar o ressaltar qualsevol node de text a les pàgines web per facilitar la seva visualització a altres persones." },
+  "defaulttitle": { "message": "Modifica la visibilitat del text important" },
+  "header": { "message": "Extensió Amaga i Ressalta" },
+  "info1": { "message": "Utilitza aquesta extensió per difuminar o ressaltar text específic a la pàgina. Permet la modificació del text per aplicar estils." },
+  "info2": { "message": "El text de la pàgina web on s'ha activat aquest pop-up es modificarà." },
+  "enable": { "message": "Activa la modificació del text:" },
+  "selectmode": { "message": "Selecciona el mode:" },
+  "bluroption": { "message": "Difuminar" },
+  "highlightoption": { "message": "Ressaltar" },
+  "placeholder": { "message": "Introdueix la paraula clau a modificar" },
+  "info3": { "message": "Pots canviar els colors. Després, cal que tanquis la pàgina d'opcions i tornis a obrir aquest pop-up a la pàgina desitjada." },
+  "selectcolortext": { "message": "Selecciona el color del text:" },
+  "selectcolorshadow": { "message": "Selecciona el color de l'ombra:" },
+  "applyrule": { "message": "Aplica la regla" },
+  "optionstitle": { "message": "Opcions de color" },
+  "optionsheader": { "message": "Selecciona els colors" },
+  "optionsinfo": { "message": "Selecciona els colors desitjats, prem \"Desa\", tanca aquesta pàgina i torna a obrir el pop-up (icona d'aquest complement a la part superior dreta de la finestra del navegador) a la pàgina desitjada." },
+  "textcolor": { "message": "Color del text: " },
+  "shadowcolor": { "message": "Color de l'ombra: " },
+  "savebutton": { "message": "Desa" }
+}
