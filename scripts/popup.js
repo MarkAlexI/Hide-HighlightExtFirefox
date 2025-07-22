@@ -5,7 +5,7 @@ const updateBadge = (isActive = false) => {
   const badgeColor = isActive ? "#0000FF" : "#A9A9A9";
   
   browser.action.setBadgeText({ text: label });
-  browser.action.setBadgeBackgroundColor({ 'color': badgeColor });
+  browser.action.setBadgeBackgroundColor({ "color": badgeColor });
 };
 
 const apply = () => {
@@ -53,7 +53,7 @@ toggleSwitch.addEventListener("change", (event) => {
   }, 0);
   
   if (!isActive) {
-    textInput.value = '';
+    textInput.value = "";
     browser.storage.sync.set({
       "targetText": textInput.value
     });
@@ -109,3 +109,24 @@ browser.runtime.getBrowserInfo().then(info => {
     document.getElementById("warning-info").classList.remove("hidden");
   }
 });
+
+let initialViewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
+function handleViewportChange() {
+  if (window.visualViewport) {
+    const currentHeight = window.visualViewport.height;
+    const heightDifference = initialViewportHeight - currentHeight;
+    
+    if (heightDifference > 150) {
+      document.body.classList.add("keyboard-visible");
+      document.body.style.paddingBottom = heightDifference + "px";
+    } else {
+      document.body.classList.remove("keyboard-visible");
+      document.body.style.paddingBottom = "0px";
+    }
+  }
+}
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", handleViewportChange);
+}

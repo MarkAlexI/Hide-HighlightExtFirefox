@@ -183,3 +183,10 @@ select,
 .browser-warning a:hover {
   text-decoration: none;
 }
+
+@media screen and (max-width: 768px) {
+  body.keyboard-visible button {
+    margin-bottom: 60px;
+    z-index: 10;
+  }
+}
